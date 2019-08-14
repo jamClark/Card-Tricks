@@ -1,0 +1,73 @@
+﻿
+
+FEATURES:
+	*-create / load / save workspaces (and image directories)
+	*-image list (temlate edior allows image choice and card editor provides images to choose from)
+	-Sort Flag Element - used for allowing cards to be viewed and sorted by these elements in a data list
+
+	-re-order decks and sets with Drag'n'Drop
+	-allow disabling of return carriage in text regions
+	-add elements through main menu and context of workspace (because large elements disallow us from right-clicking on template)
+	-Hold shift when dragging to lock to axis/scale proportionately
+	-template guids
+	-vector image support
+	-zoom and viewmove with mouse
+	-double click to focus sub-elements (text regions mostly- do this by moving the adroners around in the child order?)
+	-add Glyphs to a text element
+	-auto hyphens for RTB
+	-Spellcheck for RTB and BTR(basic text region)
+
+SYSTEM:
+	X(?)-add more customization to EditPropAttribute (lists, combos, sizes, etc)
+	*-edit style/weight within a text element
+	*-reconcile deletions
+	*-reconcile layers
+	*-reconcile element name changes
+	*-reflect template name change onto workspace and all cards using that template
+		-renaming templates (still needs enforcement of unique names)
+	-remove unneded event hook for elements in the designer (the canvas now handles selection of elements)
+	-changing the name of the template needs to reflect back on the Game.RenameTemplate()
+	-template parenting
+	-focused loading window during long operations
+
+ELEMENTS:
+	IntegerElement
+	FloatElement
+	DropListElement
+	DropListImageElement
+	ImagePlaceholderElement
+
+TEST:
+	-test layers in save/reload scenario
+	-need to test Guids after reloading
+	-adding new data to elements will not break old save files
+	
+-BUGS:
+	-when cloning a card, StaticImageElement doesn't copy (missing ImageDirectory?)
+	-reconciling elements causes InstanceProperties to reset
+	-InstanceProperty controls don't get default values
+	-TextRegionElement: - can't reload text alignment
+	-TextRegionElement: - can't reload
+	-Can't access card-instance edit props after reloading. (because UIElements aren't of type List<> maybe?)
+	-template name changes aren't updated to the workspace model
+	-Decks are converted to basic arrays upon reload and will crash when adding cards to them
+	-Need a 'Sort by' flag for all elements. missing saveable data from elements (forget what it is but it's needed BEFORE we have to upgrade any save files)
+	
+	-layers need to save as indices so that we can reconcile them
+	-ImageListElement doesn't have the editprop on the correct property (but the correct one has infinite recursion?)
+	-we need a 'copy order' parameter for ShallowCopy attribute.
+	-BitmapWrapper needs to share assets of the same file
+	-We need to make all Bitmap Loading routines (StaticImage and ImageListBuilder currently) move the image to the workspace folder
+	-'Add Card' does not appear on the main menu when templates are added. It still says 'No Templates Available'.
+	-static images should share a single resource
+	-system font list should share a single array list
+	
+
+	System.Windows.Data Error: 7 : ConvertBack cannot convert value '' (type 'String'). BindingExpression:Path=FontFamily; DataItem='TextRegionElement' (HashCode=30164653); target element is 'ComboBox' (Name=''); target property is 'Text' (type 'String') NotSupportedException:'System.NotSupportedException: FontFamilyConverter cannot convert from System.String.
+   at MS.Internal.Data.DefaultValueConverter.ConvertHelper(Object o, Type destinationType, DependencyObject targetElement, CultureInfo culture, Boolean isForward)
+   at MS.Internal.Data.SourceDefaultValueConverter.ConvertBack(Object o, Type type, Object parameter, CultureInfo culture)
+   at System.Windows.Data.BindingExpression.ConvertBackHelper(IValueConverter converter, Object value, Type sourceType, Object parameter, CultureInfo culture)'
+System.Windows.Data Error: 23 : Cannot convert '' from type 'String' to type 'System.Windows.Media.FontFamily' for 'en-US' culture with default conversions; consider using Converter property of Binding. NotSupportedException:'System.NotSupportedException: FontFamilyConverter cannot convert from System.String.
+   at System.ComponentModel.TypeConverter.GetConvertFromException(Object value)
+   at System.Windows.Media.FontFamilyConverter.ConvertFrom(ITypeDescriptorContext context, CultureInfo cultureInfo, Object o)
+   at MS.Internal.Data.DefaultValueConverter.ConvertHelper(Object o, Type destinationType, DependencyObject targetElement, CultureInfo culture, Boolean isForward)'

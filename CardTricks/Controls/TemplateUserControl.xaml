@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="CardTricks.Controls.TemplateUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300"
+             xmlns:con="clr-namespace:CardTricks.Controls"
+             DataContext="{Binding RelativeSource={RelativeSource Self}}"
+             Style="{StaticResource DesignerElementStyle}"
+             Tag="{Binding Path=DataContext, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"
+             Name="Element"
+             ContextMenu="{StaticResource BaseTemplateContextMenu}"
+             >
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="con:TemplateUserControl.CanManipulateUnset">
+            <BeginStoryboard>
+                <Storyboard>
+                    <ObjectAnimationUsingKeyFrames Duration="0" 
+                                                   Storyboard.TargetName="Element" 
+                                                   Storyboard.TargetProperty="ContextMenu">
+                        <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Null}"/>
+                    </ObjectAnimationUsingKeyFrames>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </UserControl.Triggers>
+    <ContentControl x:Name="UserControlContent">
+            <!-- this is overtop of the MoveThumb contro, thus, it can't be moved while this is hit-enabled-->
+            <Canvas x:Name="layoutsurfaceContent"
+                    Background="#aaaaaa"
+                    Margin="0">
+            <con:DesignerItemDecorator x:Name="ItemDecorator"/>
+            <con:MoveThumbControlAdv x:Name="MoveThumb" Template="{StaticResource MoveThumbTemplate}"
+                                              Cursor="SizeAll"
+                                              Canvas.Left="0"
+                                              Canvas.Right="0"
+                                              Width="{Binding ElementName=Element, Path=ActualWidth}"
+                                              Height="{Binding ElementName=Element, Path=ActualHeight}"
+                                              VerticalAlignment="Stretch"
+                                              HorizontalAlignment="Stretch"
+                                              />
+            </Canvas>
+    </ContentControl>
+</UserControl>

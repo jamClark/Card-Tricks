@@ -1,0 +1,73 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:s="clr-namespace:CardTricks"
+                    xmlns:con="clr-namespace:CardTricks.Controls"
+                    xmlns:po="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    mc:Ignorable="po"
+                    >
+
+    
+
+    <!-- Main Window Workspace Context Menu -->
+    <ContextMenu x:Key="WorkspaceContextMenu" 
+                 StaysOpen="true" 
+                 DataContext="{Binding Path=PlacementTarget.Tag, RelativeSource={RelativeSource Self}}" >
+        <MenuItem Header="Center View on Card" Command="{Binding CenterCardViewCmd}" />
+    </ContextMenu>
+    
+   
+    <!-- Template Context Menu -->
+    <ContextMenu x:Key="BaseTemplateContextMenu" 
+                 DataContext="{Binding Path=PlacementTarget.Tag, RelativeSource={RelativeSource Self}}"
+                 po:Freeze="true"
+                 >
+        <MenuItem Header="Add">
+            <MenuItem Header="Basic Text Region" Command="{Binding Path=AddElementCmd}" CommandParameter="CardTricks.Models.Elements.TextRegionElement"/>
+            
+            <MenuItem Header="Rich Text Region" Command="{Binding Path=AddElementCmd}" CommandParameter="CardTricks.Models.Elements.RichTextRegion"/>
+            <MenuItem Header="Static Template Image" Command="{Binding Path=AddElementCmd}" CommandParameter="CardTricks.Models.Elements.StaticImageElement"/>
+            <!--<MenuItem Header="Image List" Command="{Binding Path=AddElementCmd}" CommandParameter="CardTricks.Models.Elements.ImageListElement"/>
+            -->
+        </MenuItem>
+    </ContextMenu>
+    
+
+    
+   <!-- Element Context Menu -->
+    <ContextMenu x:Key="BaseElementContextMenu" >
+        <MenuItem Header="Center" Command="{Binding PositionCenterCmd}" />
+        <Separator />
+        <MenuItem Header="Horizontal Alignment" >
+            <MenuItem Header="Left to Left" Command="{Binding PositionHorLeftToLeftCmd}" />
+            <MenuItem Header="Right to Right" Command="{Binding PositionHorRightToRightCmd}" />
+            <Separator />
+            <MenuItem Header="Center" Command="{Binding PositionHorCenterCmd}" />
+            <Separator />
+            <MenuItem Header="Left to Center" Command="{Binding PositionHorLeftToCenterCmd}" />
+            <MenuItem Header="Right to Center" Command="{Binding PositionHorRightToCenterCmd}" />
+        </MenuItem>
+        <MenuItem Header="Vertical Alignment" >
+            <MenuItem Header="Top to Top" Command="{Binding PositionVertTopToTopCmd}" />
+            <MenuItem Header="Bottom to Bottom" Command="{Binding PositionVertBottomToBottomCmd}" />
+            <Separator />
+            <MenuItem Header="Center" Command="{Binding PositionVertCenterCmd}" />
+            <Separator />
+            <MenuItem Header="Top to Center" Command="{Binding PositionVertTopToCenterCmd}" />
+            <MenuItem Header="Bottom to Center" Command="{Binding PositionVertBottomToCenterCmd}" />
+        </MenuItem>
+        <Separator />
+        <MenuItem Header="Bring To Front" Command="{Binding BringToFrontCmd}"/>
+        <MenuItem Header="Send To Back" Command="{Binding SendToBackCmd}" />
+        <MenuItem Header="Move Up" Command="{Binding MoveUpLayerCmd}"/>
+        <MenuItem Header="Move Down" Command="{Binding MoveDownLayerCmd}" />
+        <Separator />
+        <MenuItem Header="Lock" Command="{Binding LockCmd}"/>
+        <Separator />
+        <MenuItem Header="Rename Element" Command="{Binding RenameElementCmd}"/>
+        <Separator />
+        <MenuItem Header="Remove" Command="{Binding RemoveElementCmd}"/>
+    </ContextMenu>
+
+</ResourceDictionary>
+

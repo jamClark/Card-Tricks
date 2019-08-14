@@ -1,0 +1,32 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" 
+             x:Name="Root" 
+             x:Class="CardTricks.Controls.SuperRichTextBox" 
+             mc:Ignorable="d">
+    <Grid>
+        <RichTextBox x:Name="rtbText" Margin="0">
+            <xctk:RichTextBoxFormatBarManager.FormatBar>
+                <xctk:RichTextBoxFormatBar>
+                    <xctk:RichTextBoxFormatBar.Style>
+                        <Style>
+                            <Style.Resources>
+                                <Style TargetType="ComboBox">
+                                    <Setter Property="MaxDropDownHeight" Value="120"/>
+                                </Style>
+                            </Style.Resources>
+                        </Style>
+                    </xctk:RichTextBoxFormatBar.Style>
+                </xctk:RichTextBoxFormatBar>
+            </xctk:RichTextBoxFormatBarManager.FormatBar>
+            <FlowDocument>
+                <Paragraph>
+                    <Run Text="RichTextBox"/>
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
+    </Grid>
+</UserControl>

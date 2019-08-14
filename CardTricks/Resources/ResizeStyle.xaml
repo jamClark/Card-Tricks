@@ -1,0 +1,255 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:s="clr-namespace:CardTricks"
+                    xmlns:con="clr-namespace:CardTricks.Controls">
+    <!-- converters -->
+    <con:DoubleFormatConverter x:Key="doubleFormatConverter"/>
+    
+    
+    <!-- control templates -->
+    
+    <ControlTemplate x:Key="ResizeThumbControlAdvTabTemplate">
+        <Ellipse Fill="#FF6284BA"/>
+    </ControlTemplate>
+    
+    
+    <ControlTemplate x:Key="ResizeThumbControlAdvBorderTemplate">
+        <Rectangle Fill="Blue"/>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="RotateThumbControlAdvTabTemplate">
+        <Ellipse Fill="Transparent"/>
+    </ControlTemplate>
+
+    <!-- styles -->
+    <!--<Style x:Key="ResizeDecoratorStyle" TargetType="Control">-->
+    <Style TargetType="{x:Type con:ResizeRotateChrome}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type con:ResizeRotateChrome}">
+                    <Grid>
+                        <con:RotateThumbControlAdv Template="{StaticResource RotateThumbControlAdvTabTemplate}" 
+                                                   Width="20" 
+                                                   Height="20" 
+                                                   Margin="-12 -12 0 0"
+                                                   VerticalAlignment="Top" 
+                                                   HorizontalAlignment="Left"/>
+                        <con:RotateThumbControlAdv Template="{StaticResource RotateThumbControlAdvTabTemplate}" 
+                                                   Width="20" 
+                                                   Height="20" 
+                                                   Margin="0 -12 -12 0"
+                                                   VerticalAlignment="Top" 
+                                                   HorizontalAlignment="Right"/>
+                        <con:RotateThumbControlAdv Template="{StaticResource RotateThumbControlAdvTabTemplate}" 
+                                                   Width="20" 
+                                                   Height="20" 
+                                                   Margin="-12 0 0 -12"
+                                                   VerticalAlignment="Bottom" 
+                                                   HorizontalAlignment="Left"/>
+                        <con:RotateThumbControlAdv Template="{StaticResource RotateThumbControlAdvTabTemplate}" 
+                                                   Width="20" 
+                                                   Height="20"
+                                                   Margin="0 0 -12 -12"
+                                                   VerticalAlignment="Bottom" 
+                                                   HorizontalAlignment="Right"/>
+                        
+                        
+                        <con:ResizeThumbControlAdv Template="{StaticResource ResizeThumbControlAdvBorderTemplate}" 
+                                                   Height="3" 
+                                                   Cursor="SizeNS"
+                                                   Margin="0 -4 0 0"
+                                                   VerticalAlignment="Top" 
+                                                   HorizontalAlignment="Stretch"/>
+                        <con:ResizeThumbControlAdv Template="{StaticResource ResizeThumbControlAdvBorderTemplate}"
+                                                   Width="3" 
+                                                   Cursor="SizeWE" 
+                                                   Margin="-4 0 0 0"
+                                                   VerticalAlignment="Stretch" 
+                                                   HorizontalAlignment="Left"/>
+                        <con:ResizeThumbControlAdv Template="{StaticResource ResizeThumbControlAdvBorderTemplate}" 
+                                                   Width="3" 
+                                                   Cursor="SizeWE" 
+                                                   Margin="0 0 -4 0"
+                                                   VerticalAlignment="Stretch" 
+                                                   HorizontalAlignment="Right"/>
+                        <con:ResizeThumbControlAdv Template="{StaticResource ResizeThumbControlAdvBorderTemplate}" 
+                                                   Height="3" 
+                                                   Cursor="SizeNS"
+                                                   Margin="0 0 0 -4"
+                                                   VerticalAlignment="Bottom"  
+                                                   HorizontalAlignment="Stretch"/>
+                        <con:ResizeThumbControlAdv Template="{StaticResource ResizeThumbControlAdvTabTemplate}"
+                                                   Width="7" 
+                                                   Height="7" 
+                                                   Cursor="SizeNWSE" 
+                                                   Margin="-6 -6 0 0"
+                                                   VerticalAlignment="Top" 
+                                                   HorizontalAlignment="Left"/>
+                        <con:ResizeThumbControlAdv Template="{StaticResource ResizeThumbControlAdvTabTemplate}" 
+                                                   Width="7" 
+                                                   Height="7" 
+                                                   Cursor="SizeNESW" 
+                                                   Margin="0 -6 -6 0"
+                                                   VerticalAlignment="Top" 
+                                                   HorizontalAlignment="Right"/>
+                        <con:ResizeThumbControlAdv Template="{StaticResource ResizeThumbControlAdvTabTemplate}" 
+                                                   Width="7" 
+                                                   Height="7" 
+                                                   Cursor="SizeNESW" 
+                                                   Margin="-6 0 0 -6"
+                                                   VerticalAlignment="Bottom" 
+                                                   HorizontalAlignment="Left"/>
+                        <con:ResizeThumbControlAdv Template="{StaticResource ResizeThumbControlAdvTabTemplate}" 
+                                                   Width="7" 
+                                                   Height="7" 
+                                                   Cursor="SizeNWSE" 
+                                                   Margin="0 0 -6 -6"
+                                                   VerticalAlignment="Bottom" 
+                                                   HorizontalAlignment="Right"/>
+                    </Grid>
+                </ControlTemplate>
+                
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    
+    <!-- Currently un-used styles -->
+    <Style TargetType="{x:Type con:SizeChrome}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type con:SizeChrome}">
+                    <Grid SnapsToDevicePixels="True">
+                        <Path Stroke="Red"
+                              StrokeThickness="1"
+                              Height="10"
+                              VerticalAlignment="Bottom"
+                              Margin="-2,0,-2,-15"
+                              Stretch="Fill"
+                              Data="M0,0 0,10 M 0,5 100,5 M 100,0 100,10"/>
+                        <TextBlock Text="{Binding Path=Width, Converter={StaticResource doubleFormatConverter}}"
+                                   Background="White"
+                                   Padding="3,0,3,0"
+                                   Foreground="Red"
+                                   Margin="0,0,0,-18"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Bottom"/>
+                        <Path Stroke="Red"
+                              StrokeThickness="1"
+                              Width="10"
+                              HorizontalAlignment="Right"
+                              Margin="0,-2,-15,-2"
+                              Stretch="Fill"
+                              Data="M5,0 5,100 M 0,0 10,0 M 0,100 10,100"/>
+                        <TextBlock Text="{Binding Path=Height, Converter={StaticResource doubleFormatConverter}}"
+                                   Background="White"
+                                   Foreground="Red"
+                                   Padding="3,0,3,0"
+                                   Margin="0,0,-18,0"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center">
+                            <TextBlock.LayoutTransform>
+                                <RotateTransform Angle="90" CenterX="1" CenterY="0.5"/>
+                            </TextBlock.LayoutTransform>
+                        </TextBlock>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    
+    <Style TargetType="{x:Type Shape}" x:Key="ThumbCorner">
+        <Setter Property="SnapsToDevicePixels" Value="true" />
+        <Setter Property="Stroke" Value="#FFC8C8C8" />
+        <Setter Property="StrokeThickness" Value=".5" />
+        <Setter Property="Width" Value="7" />
+        <Setter Property="Height" Value="7" />
+        <Setter Property="Margin" Value="-2" />
+        <Setter Property="Fill">
+            <Setter.Value>
+                <RadialGradientBrush Center="0.2, 0.2" GradientOrigin="0.2, 0.2" RadiusX="0.8" RadiusY="0.8">
+                    <GradientStop Color="White" Offset="0.0" />
+                    <GradientStop Color="Gray" Offset="0.8" />
+                </RadialGradientBrush>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <!--<Style TargetType="{x:Type con:ResizeRotateChrome}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type con:ResizeRotateChrome}">
+                    <Grid>
+                        <Grid Opacity="0" Margin="-3">
+                            <con:RotateThumbControlAdv Width="7"
+                                                         Height="7"
+                                                         Margin="0,-20,0,0"
+                                                         Cursor="Hand"
+                                                         VerticalAlignment="Top"
+                                                         HorizontalAlignment="Center"/>
+                            <con:ResizeThumbControlAdv Height="3"
+                                                         Cursor="SizeNS"
+                                                         VerticalAlignment="Top"
+                                                         HorizontalAlignment="Stretch"/>
+                            <con:ResizeThumbControlAdv Width="3"
+                                                         Cursor="SizeWE"
+                                                         VerticalAlignment="Stretch"
+                                                         HorizontalAlignment="Left"/>
+                            <con:ResizeThumbControlAdv Width="3"
+                                                     Cursor="SizeWE"
+                                                     VerticalAlignment="Stretch"
+                                                     HorizontalAlignment="Right"/>
+                            <con:ResizeThumbControlAdv Height="3"
+                                                     Cursor="SizeNS"
+                                                     VerticalAlignment="Bottom"
+                                                     HorizontalAlignment="Stretch"/>
+                            <con:ResizeThumbControlAdv Width="7"
+                                                     Height="7"
+                                                     Margin="-2"
+                                                     Cursor="SizeNWSE"
+                                                     VerticalAlignment="Top"
+                                                     HorizontalAlignment="Left"/>
+                            <con:ResizeThumbControlAdv Width="7"
+                                                         Height="7"
+                                                         Margin="-2"
+                                                         Cursor="SizeNESW"
+                                                         VerticalAlignment="Top"
+                                                         HorizontalAlignment="Right"/>
+                            <con:ResizeThumbControlAdv Width="7"
+                                                         Height="7"
+                                                         Margin="-2"
+                                                         Cursor="SizeNESW"
+                                                         VerticalAlignment="Bottom"
+                                                         HorizontalAlignment="Left"/>
+                            <con:ResizeThumbControlAdv Width="7"
+                                                         Height="7"
+                                                         Margin="-2"
+                                                         Cursor="SizeNWSE"
+                                                         VerticalAlignment="Bottom"
+                                                         HorizontalAlignment="Right"/>
+                        </Grid>
+                        <Grid IsHitTestVisible="False" Opacity="1" Margin="-3">
+                            <Rectangle SnapsToDevicePixels="True"
+                                         StrokeThickness="1"
+                                         Margin="1"
+                                         Stroke="White"/>
+                            <Line StrokeThickness="1" X1="0" Y1="0" X2="0" Y2="20"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Top"
+                                    Margin="0,-19,0,0"
+                                    Stroke="White"/>
+                            <Ellipse Style="{StaticResource ThumbCorner}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-1,-20,0,0"/>
+                            <Ellipse Style="{StaticResource ThumbCorner}" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                            <Ellipse Style="{StaticResource ThumbCorner}" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+                            <Ellipse Style="{StaticResource ThumbCorner}" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                            <Ellipse Style="{StaticResource ThumbCorner}" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+                        </Grid>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+-->
+</ResourceDictionary>

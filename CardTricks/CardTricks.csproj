@@ -1,0 +1,296 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4484A00C-D246-4CA7-9911-7DF3B46C94A1}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CardTricks</RootNamespace>
+    <AssemblyName>CardTricks</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Ookii.Dialogs.Wpf">
+      <HintPath>Resources\Lib\Ookii.Dialogs.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="PhotoShop">
+      <HintPath>Resources\Lib\PhotoShop.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
+    <Reference Include="Xceed.Wpf.Toolkit">
+      <HintPath>Resources\Lib\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Attributes\ContentElementCloneAttribute.cs" />
+    <Compile Include="Attributes\SaveableObjectAttribute.cs" />
+    <Compile Include="Attributes\IEditProp.cs" />
+    <Compile Include="Attributes\InstanceEditPropAttribute.cs" />
+    <Compile Include="Attributes\DeepElementCloneAttribute.cs" />
+    <Compile Include="Attributes\ReconcilableProp.cs" />
+    <Compile Include="Attributes\SaveableAttribute.cs" />
+    <Compile Include="Attributes\ShallowElementCloneAttribute.cs" />
+    <Compile Include="Cmds\CommandWrapper.cs" />
+    <Compile Include="Controls\BindableRichTextBox.cs" />
+    <Compile Include="Controls\ColorPicker.cs" />
+    <Compile Include="Controls\DoubleUpDown.cs" />
+    <Compile Include="Controls\ElementUserControl.xaml.cs">
+      <DependentUpon>ElementUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\DesignItemDecorator.cs" />
+    <Compile Include="Controls\DragCanvas.cs" />
+    <Compile Include="Controls\ImageListBuilder.xaml.cs">
+      <DependentUpon>ImageListBuilder.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\MoveThumbControlAdv.cs" />
+    <Compile Include="Controls\NewWorkspaceDialog.cs" />
+    <Compile Include="Controls\PairedComboBox.cs" />
+    <Compile Include="Controls\ResizeRotateAdorner.cs" />
+    <Compile Include="Controls\ResizeRotateChrome.cs" />
+    <Compile Include="Controls\ResizeThumbControlAdv.cs" />
+    <Compile Include="Controls\RotateThumbControlAdv.cs" />
+    <Compile Include="Controls\SizeAdorner.cs" />
+    <Compile Include="Controls\SizeChrome.cs" />
+    <Compile Include="Controls\SuperRichTextBox.xaml.cs">
+      <DependentUpon>SuperRichTextBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TemplateControl.cs" />
+    <Compile Include="ControlTests.xaml.cs">
+      <DependentUpon>ControlTests.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Converters\BitmapWrapperToBitmapConverter.cs" />
+    <Compile Include="Converters\ColorToSolidColorBrushConverter.cs" />
+    <Compile Include="Converters\ColorToBorderConverter.cs" />
+    <Compile Include="Attributes\EditPropAttribute.cs" />
+    <Compile Include="Converters\PairToTextAlignmentConverter.cs" />
+    <Compile Include="Converters\TextAlignmentToPairConverter.cs" />
+    <Compile Include="Converters\MultiplesConverter.cs" />
+    <Compile Include="Interfaces\ICardDeckViewItem.cs" />
+    <Compile Include="Interfaces\ICardDeckModel.cs" />
+    <Compile Include="Interfaces\ICardModel.cs" />
+    <Compile Include="Interfaces\ICardSetModel.cs" />
+    <Compile Include="Interfaces\ICardSetViewItem.cs" />
+    <Compile Include="Interfaces\ICardViewItem.cs" />
+    <Compile Include="Interfaces\IDesignItemDecorator.cs" />
+    <Compile Include="Interfaces\IElement.cs" />
+    <Compile Include="Interfaces\ITemplate.cs" />
+    <Compile Include="Interfaces\ITemplateElement.cs" />
+    <Compile Include="Attributes\ModelPropAttribute.cs" />
+    <Compile Include="Interfaces\ITreeViewItem.cs" />
+    <Compile Include="Models\Base\BaseElement.cs" />
+    <Compile Include="Models\Base\Card.cs" />
+    <Compile Include="Models\Elements\BindTarget.cs" />
+    <Compile Include="Models\Elements\ImageListElement.cs" />
+    <Compile Include="Utils\AssetManager.cs" />
+    <Compile Include="Utils\BitmapWrapper.cs" />
+    <Compile Include="Models\Elements\RichTextRegion.cs" />
+    <Compile Include="Models\Elements\StaticImageElement.cs" />
+    <Compile Include="Models\Extended\CardViewItem.cs" />
+    <Compile Include="Models\Base\Deck.cs" />
+    <Compile Include="Models\Base\CardSet.cs" />
+    <Compile Include="Models\Base\Game.cs" />
+    <Compile Include="Models\Extended\DeckViewItem.cs" />
+    <Compile Include="Models\Extended\SetViewItem.cs" />
+    <Compile Include="Models\Base\Template.cs" />
+    <Compile Include="Controls\TemplateUserControl.xaml.cs">
+      <DependentUpon>TemplateUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Elements\TextRegionElement.cs" />
+    <Compile Include="Models\Base\ViewModel.cs" />
+    <Compile Include="Models\Base\Workspace.cs" />
+    <Compile Include="Utils\AlignmentPairs.cs" />
+    <Compile Include="Utils\Casting.cs" />
+    <Compile Include="Utils\CTSerializer.cs" />
+    <Compile Include="Utils\FontHelper.cs" />
+    <Compile Include="Utils\ObjectHelper.cs" />
+    <Compile Include="Converters\AngleToTransformConverter.cs" />
+    <Compile Include="Converters\DpiToInchConverter.cs" />
+    <Compile Include="Converters\InchToDpiConverter.cs" />
+    <Compile Include="Utils\DependencyObjectHelper.cs" />
+    <Compile Include="Cmds\RelayCommand.cs" />
+    <Compile Include="Utils\Pair.cs" />
+    <Compile Include="Utils\TreeHelper.cs" />
+    <Compile Include="Utils\WpfTreeHelper.cs" />
+    <Compile Include="Utils\XamlTool.cs" />
+    <Compile Include="Windows\CalculatorWindow.xaml.cs">
+      <DependentUpon>CalculatorWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Converters\RotateToTransformConverter.cs" />
+    <Compile Include="Windows\ProjectNameWindow.xaml.cs">
+      <DependentUpon>ProjectNameWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\RenamerWindow.xaml.cs">
+      <DependentUpon>RenamerWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\TemplateDesigner.xaml.cs">
+      <DependentUpon>TemplateDesigner.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Converters\TransformToAngleConverter.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="View\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Controls\ElementUserControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\ImageListBuilder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\SuperRichTextBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\TemplateUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlTests.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\DesignerItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\DragStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Menus.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\ResizeStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\RotateStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\CalculatorWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\ProjectNameWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\RenamerWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\TemplateDesigner.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Cursors\RotateCursor.cur" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="TODO.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\grey_tiled.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Windows\Resources\Images\CardIcon.png" />
+    <Resource Include="Windows\Resources\Images\CardSetIcon.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

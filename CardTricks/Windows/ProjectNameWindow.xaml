@@ -1,0 +1,13 @@
+﻿<Window x:Class="CardTricks.Windows.ProjectNameWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="ProjectNameWindow" Height="205.311" Width="300" WindowStartupLocation="CenterOwner" ResizeMode="NoResize">
+    <Grid x:Name="grid" Background="#FF85A0B8">
+        <TextBox x:Name="textboxProjectName" HorizontalAlignment="Left" Height="23" Margin="10,30,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="273"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Project Name" VerticalAlignment="Top" RenderTransformOrigin="0.231,0.536"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,77,0,0" TextWrapping="Wrap" Text="Game Name" VerticalAlignment="Top"/>
+        <TextBox x:Name="textboxGameName" HorizontalAlignment="Left" Height="23" Margin="10,96,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="273"/>
+        <Button Content="Ok" HorizontalAlignment="Left" Margin="208,147,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+
+    </Grid>
+</Window>
